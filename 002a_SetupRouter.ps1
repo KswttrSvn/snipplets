@@ -5,6 +5,10 @@ Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
 Connect-VIServer -Server vcsa.tanzu.local -User administrator@vsphere.local -Password VMware1!
 Connect-CisServer -Server vcsa.tanzu.local -User administrator@vsphere.local -Password VMware1!
 
+if (!(Test-Path -path ./VMKeystrokes.ps1)) {
+  Invoke-WebRequest -Uri https://raw.githubusercontent.com/lamw/vghetto-scripts/master/powershell/VMKeystrokes.ps1  -OutFile VMKeystrokes.ps1
+  }
+
 Import-Module ./VMKeystrokes.ps1
 
 #initial password change
