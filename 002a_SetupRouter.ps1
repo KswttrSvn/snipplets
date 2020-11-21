@@ -127,4 +127,4 @@ Set-VMKeystrokes -VMName $VM -StringInput ":wq" -ReturnCarriage $true
 #Set-VMKeystrokes -VMName $VM -StringInput "bash ./setupRouter.sh" -ReturnCarriage $true
 
 #LogOff the VM
-#Set-VMKeystrokes -VMName $VM -StringInput "logout" -ReturnCarriage $true
+Set-VMKeystrokes -VMName $VM -StringInput "logout" -ReturnCarriage $true
