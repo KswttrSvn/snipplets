@@ -29,7 +29,8 @@ Set-VMKeystrokes -VMName $VM -StringInput "PHOTON_ROUTER_DNS=192.168.222.2" -Ret
 Set-VMKeystrokes -VMName $VM -StringInput "SETUP_DNS_SERVER=1" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM  -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "tdnf -y update" -ReturnCarriage $true
-Set-VMKeystrokes -VMName $VM -StringInput "if [ ${SETUP_DNS_SERVER} -eq 1 ]; then" -ReturnCarriage $true
+Set-VMKeystrokes -VMName $VM -StringInput "if [ $"
+Set-VMKeystrokes -VMName $VM -StringInput "{SETUP_DNS_SERVER} -eq 1 ]; then" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "    tdnf install -y unbound" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM  -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "    cat > /etc/unbound/unbound.conf << EOF" -ReturnCarriage $true
@@ -112,7 +113,8 @@ Set-VMKeystrokes -VMName $VM -StringInput "iptables -A FORWARD -i eth0 -o eth1 -
 Set-VMKeystrokes -VMName $VM -StringInput "iptables -A FORWARD -i eth0 -o eth2 -m state --state RELATED,ESTABLISHED -j ACCEPT" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "iptables -A FORWARD -i eth2 -o eth0 -j ACCEPT" -ReturnCarriage $true
-Set-VMKeystrokes -VMName $VM -StringInput "if [ ${SETUP_DNS_SERVER} -eq 1 ]; then" -ReturnCarriage $true
+Set-VMKeystrokes -VMName $VM -StringInput "if [ $"
+Set-VMKeystrokes -VMName $VM -StringInput "{SETUP_DNS_SERVER} -eq 1 ]; then" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "    iptables -A INPUT -i eth0 -p udp --dport 53 -j ACCEPT" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "    iptables -A INPUT -i eth1 -p udp --dport 53 -j ACCEPT" -ReturnCarriage $true
 Set-VMKeystrokes -VMName $VM -StringInput "    iptables -A INPUT -i eth2 -p udp --dport 53 -j ACCEPT" -ReturnCarriage $true
